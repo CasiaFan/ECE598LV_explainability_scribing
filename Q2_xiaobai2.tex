@@ -1,0 +1,21 @@
+
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\newcommand{\etal}{\textit{et al}}
+
+\begin{document}
+\section{How to adapt saliency map to some new image data with more then three channels? If different channels have distinctive information, how can we analyze the importance of each channel?}
+\subsection{Saliency map on images with more channels}
+Unlike normal saliency maps which we just simply add the three RGB channel saliency maps together, we need to do a channel-wise normalization to combine the saliency maps from all channels we have, since different channels may contain completely different information, and the intensity level of different channels are different. Saliency maps are sensitive to the intensity of input pixels, so it won’t make sense if we just add these maps together. Therefore, we need to normalize each channel to combine the saliency maps of every channel together.
+
+\subsection{occlusion to get channel importance}
+We can do occlusion to every single channel and raise a question: If one of the channels does not contain information, What would the accuracy become? The more accuracy drop the occlusion causes, the more important that channel is. By doing this channel-wise occlusion, we can collect the accuracy drop of each channel and reassign the weight to each channel and normalize the saliency maps from all channels based on the channel importance calculated by the accuracy drop from channel-wise occlusion. 
+
+\end{document}

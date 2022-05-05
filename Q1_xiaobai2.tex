@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+
+\newcommand{\etal}{\textit{et al}}
+
+\begin{document}
+\section{How to visualize and interpret the attention of the model from the result?}
+\subsection{Saliency map}
+Saliency map is an image map that highlights the region on which attention focus first. The goal of a saliency map is to reflect the degree of importance of a pixel to the model's attention thus showing us which part of image has more attention from the model thus more "important".
+
+One popular way of using saliency map is to use Integrated Gradient to generate saliency maps, with the help of SmoothGrad. Integrated Gradient (IG) is an interpretability technique for deep neural networks which visualizes its input feature importance that contributes to the model's prediction. It computes the gradient of the model’s prediction output to its input features and requires no modification to the original deep neural network.
+Smooth Grad is used to improve Integrated Gradient, since the gradient at any given point will be less meaningful if we have rapid fluctuation in the graph. Therefore, instead of basing a visualization directly on the gradient, we could base it on a smoothing with a Gaussian kernel. SmoothGrad use the local average of gradient values as the gradient used in Integrated Gradient so that it’s less dependent on the rapid change of value. (Daniel Smilkov, 2017)
+
+\subsection{Reference}
+Daniel Smilkov,et al."SmoothGrad: removing noise by adding noise",
+
+
+arXiv:1706.03825v1 [cs.LG] 12 Jun 2017
+\end{document}
